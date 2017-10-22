@@ -1,0 +1,11 @@
+<div class="notify-dash">
+	<article ng-repeat="message in messages track by $index" id='notify-id-{{$index}}' class="message is-{{message.type}} successfully-saved successfully-saved" >
+		<div class="message-header">
+			<p><strong>{{message.title}}</strong></p>
+			<button class="delete" aria-label="delete" ng-click='closeNotification($index)'></button>
+		</div>
+		<div class="message-body">
+			{{message.body}}
+		</div>
+	</article>
+</div>

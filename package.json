@@ -1,0 +1,22 @@
+{
+  "name": "formify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jutretel/formify.git"
+  },
+  "author": "Julia Tretal, Victor George, Yuri Carlos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jutretel/formify/issues"
+  },
+  "homepage": "https://github.com/jutretel/formify#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}

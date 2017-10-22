@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="node_modules/bulma/css/bulma.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/site.css">
+	<title></title>
+</head>
+<body ng-app="formify">
+	<div class="navbar has-shadow">	
+		
+		<div class="navbar-brand">
+			<div class="navbar-item">
+				<a href="#">
+					<h1>FORMIFY</h1>
+				<a/>
+			</div>
+			<div class="navbar-burger" data-target="navMenu">
+			  	<span></span>
+			  	<span></span>
+			  	<span></span>
+			</div>
+		</div>
+		<div class="navbar-menu navbar-end" id="navMenu">
+			<a class="navbar-item is-tab is-active">
+				História
+			</a>
+          	<span class="navbar-item">
+	          <a class="button">
+	            Login
+	          </a>
+	        </span>
+		</div>
+	</div>
+	<section class="hero is-large is-primary is-bold">
+		<div class="hero-body">
+			<div ng-view ></div>
+		</div>
+	</section>
+
+	<notify-board></notify-board>
+	
+	<div class="busy-wrapper" id="global-busy">
+		<div class="hero is-medium">
+			<div class="hero-body">
+				<div class="container has-text-centered">
+					<img src="img/Infinity.gif" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="vendors/bulma.js"></script>
+
+	<!--<script type="text/javascript">
+		$(document).ready(function(){
+			$("#global-busy").animate({ opacity: 0 },400, function(){
+				$("#global-busy").animate({ opacity: 1 },400, function(){})
+			})	
+		});
+	</script>-->
+
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/angular-route/angular-route.min.js"></script>
+	<script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+
+	<!-- flatpickr documentation https://github.com/archsaber/angular-flatpickr-->
+	<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+	<script src="https://unpkg.com/flatpickr"></script>
+	<script src="node_modules/angular-flatpickr/dist/ng-flatpickr.min.js"></script>
+
+
+	<script src="app.js"></script>
+	<script src="utils/utils.js"></script>
+
+	<script src="directives/notify/notify.service.js"></script>
+	<script src="services/user.service.js"></script>
+	<script src="services/busy.service.js"></script>
+	<script src="services/constants.factory.js"></script>
+
+	<script src="directives/combobox/combobox.directive.js"></script>
+	<script src="directives/notify/notify.directive.js"></script>
+
+	<script src="controllers/login.controller.js"></script>
+	
+</body>
+
+
+</html>
