@@ -1,0 +1,57 @@
+@import "client/node_modules/bulma/sass/utilities/initial-variables";
+
+$primary: $red !default
+$background: $grey-dark !default
+$fmy-text-grey-light: #a0a0a0 !default
+
+html, body{
+	height:100%;
+}
+
+.event-dash {
+	background-color: $grey-darker;
+
+	&__item {
+		background-color: $grey-dark;
+	}
+}
+
+.card-content {
+	background-color: $grey-dark;
+}
+
+.card-footer {
+	border-color: $fmy-text-grey-light !important;
+}
+
+.fixed{			
+	height: 100%;
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+.reset-padding{
+	padding-right: 0!important;
+}
+
+.scrollbar {
+	overflow-y: auto;
+}
+
+.force-overflow {
+    min-height: 450px;
+}
+
+.total-height{
+	height: 100% !important;
+}
+
+.roger{
+	padding-top: 10px !important;
+	background-color: $grey-darker;
+}
+.roger-content{
+	height: 100% !important;
+}
+
+@import "client/node_modules/bulma/bulma.sass";

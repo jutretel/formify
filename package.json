@@ -2,15 +2,17 @@
   "name": "formify",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss client/scss/main.scss client/css/main.css"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jutretel/formify.git"
   },
-  "author": "Julia Tretal, Victor George, Yuri Carlos",
+  "author": "Julia Tretel, Paulo Pia dos jogos, Victor George, Yuri Carlos",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jutretel/formify/issues"
@@ -18,5 +20,10 @@
   "homepage": "https://github.com/jutretel/formify#readme",
   "dependencies": {
     "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.12.1"
   }
+
 }

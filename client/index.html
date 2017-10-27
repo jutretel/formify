@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="node_modules/bulma/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 	<title></title>
 </head>
 <body ng-app="formify">
-	<div class="navbar has-shadow">	
-		
-		<div class="navbar-brand">
-			<div class="navbar-item">
-				<a href="#">
-					<h1>FORMIFY</h1>
-				<a/>
+	<section class="section is-paddingless total-height">
+		<div class="columns total-height">
+			<div class="column event-dash is-3 has-shadow reset-padding scrollbar">
+					<div class="tabs is-centered">
+						<ul>
+							<li class="is-active"><a>Seguindo</a></li>
+							<li><a>Meus</a></li>
+						</ul>
+					</div>
+					<div>
+					<div class="card">
+						<div class="card-content event-dash__item">
+							<h4 class="title">
+								Evento
+							</h4>
+							<h4 class="subtitle">
+								10/10/17 - 12/12/17
+							</h4>
+						</div>
+						<footer class="card-footer event-dash__item">
+							<span class="card-footer-item">
+								<a>Deixar de seguir</a>
+							</span>
+							<span class="card-footer-item">
+								<a>Confirmar</a>
+							</span>
+						</footer>
+					</div>
+					<br />
+				</div>
 			</div>
-			<div class="navbar-burger" data-target="navMenu">
-			  	<span></span>
-			  	<span></span>
-			  	<span></span>
+			<div class="column is-9 is-paddingless">
+				<div class="hero is-dark is-large total-height">
+					<div class="hero-body is-paddingless roger">
+						<div class="container">
+							<div ng-view></div>
+						</div>
+					</div>
+					<div class="hero-foot">
+				    <nav class="tabs is-boxed is-fullwidth">
+				      <div class="container">
+				        <ul>
+				          <li class="is-active">
+				            <a>Criar evento</a>
+				          </li>
+				          <li>
+				            <a>Locais</a>
+				          </li>
+				          <li>
+				            <a>Consultar disponibilidade</a>
+				          </li>
+				          <li>
+				            <a>Notificações</a>
+				          </li>
+				        </ul>
+				      </div>
+				    </nav>
+				  </div>
+				</div>
 			</div>
-		</div>
-		<div class="navbar-menu navbar-end" id="navMenu">
-			<a class="navbar-item is-tab is-active">
-				História
-			</a>
-          	<span class="navbar-item">
-	          <a class="button">
-	            Login
-	          </a>
-	        </span>
-		</div>
-	</div>
-	<section class="hero is-large is-primary is-bold">
-		<div class="hero-body">
-			<div ng-view ></div>
 		</div>
 	</section>
 
-	<notify-board></notify-board>
-	
 	<div class="busy-wrapper" id="global-busy">
 		<div class="hero is-medium">
 			<div class="hero-body">

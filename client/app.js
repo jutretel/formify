@@ -4,7 +4,6 @@ angular.module('formify',['ngRoute', 'ngCookies', 'angular-flatpickr'])
 	
 	$routeProvider
     .when('/login',{templateUrl:'templates/login.html', controller:'loginCtrl'})
-    .when('/tenancy',{templateUrl:'templates/tenancy.html', controller:'tenancyCtrl'})
 
 	$routeProvider.otherwise({redirectTo: '/login'})
 
