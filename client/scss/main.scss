@@ -2,13 +2,14 @@
 
 $primary: $red !default
 $background: $grey-dark !default
-$fmy-text-grey-light: #a0a0a0 !default
+$fmy-grey-light: #a0a0a0 !default
 
 html, body{
 	height:100%;
 }
 
 .event-dash {
+	padding: 0 3%;
 	background-color: $grey-darker;
 
 	&__item {
@@ -16,15 +17,60 @@ html, body{
 	}
 }
 
-.card-content {
-	background-color: $grey-dark;
+.event-tab {
+
+	&__item {
+		width: 50%;
+	}
+
+	&__text {
+		color: $fmy-grey-light !important;
+	}
 }
 
-.card-footer {
-	border-color: $fmy-text-grey-light !important;
+.tabs a:hover {
+    border-bottom-color: $primary !important;
+    color: $primary !important;
+    background-color: #222222;
 }
 
-.fixed{			
+.event-card {
+	&__content {
+		background-color: $grey-dark !important;
+	}
+
+	&__title {
+		color: $fmy-grey-light !important;
+	}
+
+	&__description {
+		color: $fmy-grey-light !important;
+		font-size: 16px !important;
+	}
+
+	&__footer {
+		border-color: $fmy-grey-light !important;
+
+		&__text {
+			color: $fmy-grey-light;
+
+			&:hover {
+				color: $primary !important;
+			}
+		}
+	}
+}
+
+.roger {
+	padding-top: 10px !important;
+	background-color: $grey-darker;	
+}
+
+.roger__content {
+	height: 100% !important;
+}
+
+.fixed {			
 	height: 100%;
 	max-height: 100%;
 	overflow-y: auto;
@@ -43,14 +89,6 @@ html, body{
 }
 
 .total-height{
-	height: 100% !important;
-}
-
-.roger{
-	padding-top: 10px !important;
-	background-color: $grey-darker;
-}
-.roger-content{
 	height: 100% !important;
 }
 

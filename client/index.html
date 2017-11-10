@@ -13,26 +13,30 @@
 			<div class="column event-dash is-3 has-shadow reset-padding scrollbar">
 					<div class="tabs is-centered">
 						<ul>
-							<li class="is-active"><a>Seguindo</a></li>
-							<li><a>Meus</a></li>
+							<li class="is-active event-tab__item">
+								<a>Seguindo</a>
+							</li>
+							<li class="event-tab__item">
+								<a class="event-tab__text">Meus</a>
+							</li>
 						</ul>
 					</div>
-					<div>
+				<div class="event-dash">
 					<div class="card">
 						<div class="card-content event-dash__item">
-							<h4 class="title">
+							<h4 class="title event-card__title">
 								Evento
 							</h4>
-							<h4 class="subtitle">
+							<div class="subtitle event-card__description">
 								10/10/17 - 12/12/17
-							</h4>
+							</div>
 						</div>
-						<footer class="card-footer event-dash__item">
-							<span class="card-footer-item">
-								<a>Deixar de seguir</a>
+						<footer class="card-footer event-card__footer event-dash__item">
+							<span class="card-footer-item event-card__footer">
+								<a class="event-card__footer__text">Deixar de seguir</a>
 							</span>
-							<span class="card-footer-item">
-								<a>Confirmar</a>
+							<span class="card-footer-item event-card__footer">
+								<a class="event-card__footer__text">Confirmar</a>
 							</span>
 						</footer>
 					</div>
@@ -40,34 +44,34 @@
 				</div>
 			</div>
 			<div class="column is-9 is-paddingless">
-				<div class="hero is-dark is-large total-height">
-					<div class="hero-body is-paddingless roger">
-						<div class="container">
-							<div ng-view></div>
-						</div>
-					</div>
-					<div class="hero-foot">
-				    <nav class="tabs is-boxed is-fullwidth">
-				      <div class="container">
-				        <ul>
-				          <li class="is-active">
-				            <a>Criar evento</a>
-				          </li>
-				          <li>
-				            <a>Locais</a>
-				          </li>
-				          <li>
-				            <a>Consultar disponibilidade</a>
-				          </li>
-				          <li>
-				            <a>Notificações</a>
-				          </li>
-				        </ul>
-				      </div>
-				    </nav>
-				  </div>
-				</div>
-			</div>
+        <div class="hero is-dark is-large total-height">
+          <div class="hero-body is-paddingless roger">
+            <div class="container">
+              <div ng-view></div>
+            </div>
+          </div>
+          <div class="hero-foot">
+            <nav class="tabs is-boxed is-fullwidth">
+              <div class="container">
+                <ul>
+                  <li class="is-active">
+                    <a>Criar evento</a>
+                  </li>
+                  <li>
+                    <a>Locais</a>
+                  </li>
+                  <li>
+                    <a>Consultar disponibilidade</a>
+                  </li>
+                  <li>
+                    <a>Notificações</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
 		</div>
 	</section>
 
@@ -89,7 +93,7 @@
 		$(document).ready(function(){
 			$("#global-busy").animate({ opacity: 0 },400, function(){
 				$("#global-busy").animate({ opacity: 1 },400, function(){})
-			})	
+			})  
 		});
 	</script>-->
 
@@ -110,6 +114,7 @@
 	<script src="services/user.service.js"></script>
 	<script src="services/busy.service.js"></script>
 	<script src="services/constants.factory.js"></script>
+	<script src="services/global.factory.js"></script>
 
 	<script src="directives/combobox/combobox.directive.js"></script>
 	<script src="directives/notify/notify.directive.js"></script>
