@@ -9,18 +9,18 @@
 </head>
 <body ng-app="formify">
 	<section class="section is-paddingless total-height">
-		<div class="columns total-height">
-			<div class="column event-dash is-3 has-shadow reset-padding scrollbar">
-					<div class="tabs is-centered">
-						<ul>
-							<li class="is-active event-tab__item">
-								<a>Seguindo</a>
-							</li>
-							<li class="event-tab__item">
-								<a class="event-tab__text">Meus</a>
-							</li>
-						</ul>
-					</div>
+		<div class="columns total-height" style="margin: 0;">
+			<div class="column event-dash is-3 has-shadow is-paddingless scrollbar">
+				<div class="tabs is-centered">
+					<ul>
+						<li class="is-active event-tab__item">
+							<a>Seguindo</a>
+						</li>
+						<li class="event-tab__item">
+							<a class="event-tab__text">Meus</a>
+						</li>
+					</ul>
+				</div>
 				<div class="event-dash">
 					<div class="card">
 						<div class="card-content event-dash__item">
@@ -40,36 +40,31 @@
 							</span>
 						</footer>
 					</div>
-					<br />
 				</div>
 			</div>
-			<div class="column is-9 is-paddingless">
-        <div class="hero is-dark is-large total-height">
-          <div class="hero-body is-paddingless roger">
-            <div class="container">
-              <div ng-view></div>
-            </div>
-          </div>
-          <div class="hero-foot">
-            <nav class="tabs is-boxed is-fullwidth">
-              <div class="container">
-                <ul>
-                  <li class="is-active">
-                    <a>Criar evento</a>
-                  </li>
-                  <li>
-                    <a>Locais</a>
-                  </li>
-                  <li>
-                    <a>Consultar disponibilidade</a>
-                  </li>
-                  <li>
-                    <a>Notificações</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
+			<div class="column is-9 is-paddingless workspace">
+				<div class="workspace-main">
+        	<div ng-view class="ng-scope"></div>
+				</div>
+        <div class="workspace-footer">
+        	<nav class="tabs is-boxed is-fullwidth">
+        	  <div class="container">
+        	    <ul style="border-style: none">
+        	      <li>
+        	        <a class="footer-menu__item">Criar evento</a>
+        	      </li>
+        	      <li>
+        	        <a class="footer-menu__item">Locais</a>
+        	      </li>
+        	      <li>
+        	        <a class="footer-menu__item">Consultar disponibilidade</a>
+        	      </li>
+        	      <li>
+        	        <a class="footer-menu__item">Notificações</a>
+        	      </li>
+        	    </ul>
+        	  </div>
+        	</nav>
         </div>
       </div>
 		</div>

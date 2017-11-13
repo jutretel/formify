@@ -3,10 +3,17 @@
 $primary: $red !default
 $background: $grey-dark !default
 $fmy-grey-light: #a0a0a0 !default
+$fmy-grey-darker: #2F2F2F;
 
 html, body{
 	height:100%;
 }
+
+ .event-workspace {
+		float: left;
+  	height: 100%;
+  	position: fixed;
+ }
 
 .event-dash {
 	padding: 0 3%;
@@ -61,13 +68,32 @@ html, body{
 	}
 }
 
+.workspace {
+	height: 100%;
+	float: right;
+}
+
+.workspace-main {
+	background-color: $fmy-grey-darker !important;
+	flex-direction: column;
+	height: 100%;
+}
+
+.workspace-footer {
+	position: fixed;
+	bottom: 0;
+	width: 75%;
+	
+	background-color: $grey-darker;
+}
+
+.footer-menu__item {
+	color: $fmy-grey-light !important;
+}
+
 .roger {
 	padding-top: 10px !important;
 	background-color: $grey-darker;	
-}
-
-.roger__content {
-	height: 100% !important;
 }
 
 .fixed {			
