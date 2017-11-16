@@ -25,9 +25,10 @@ angular.module('formify')
 		service.SetCredentials = SetCredentials;
 		service.ClearCredentials = ClearCredentials;
 
-        function SetCredentials(username, password) {
+        function SetCredentials(username, password, id) {
             var authdata = Base64.encode(username + ':' + password);
  
+
             $rootScope.globals = {
                 currentUser: {
                     username: username,

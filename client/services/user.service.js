@@ -1,34 +1,26 @@
 angular.module('formify')
 .service('userService', 
-	['constantsFactory', '$http', 'AuthService', 'busyService',
-	function(constantsFactory, $http, AuthService, busyService){
-		service = {}
-
-		var constantUrl = constantsFactory.debugUrl
+	['$http', 'AuthService', 'LocalStorage', 'globalFactory',
+	function($http, AuthService, LocalStorage, globalFactory){
+		var prefix = 'users/'
 
 		//get a user by his login and password
-		service.getUserByLogin = function(login, password, callback){
-			busyService.show()
-			$http.get(constantUrl + 'usuario/' + login + '/' + password)
-			.then((res) => {
-				console.log(res)
-				//check the return
-				if(res.data){
-					if(res.data.status)
-						AuthService.SetCredentials(res.data.response[0].login, res.data.response[0].senha)
-
-					//returns the user
-					if(callback)
-						callback(res.data)
+		this.getUserByLogin = function(login, password){
+			return $http.post(globalFactory.mainUrl + prefix + '/login', {
+				email: login,
+				password: password
+			}).then((data)=>{
+				if(data.data != undefined){
+					//Salva os dados do usuario no cookie
+					AuthService.SetCredentials(login, password, data.data.id)
+					//salva os dados no localstorage para facilitar as requisições mais tarde
+					LocalStorage.setValue(globalFactory.userKey,
+		                {
+		                    id : data.data.id,
+		                    username: login
+		                })
 				}
-				//returns null in case of error
-				else if(callback)
-					callback(null)
-			})
-			.finally(()=>{
-				busyService.hide()
+				return data
 			})
 		}
-
-		return service
 	}]);
