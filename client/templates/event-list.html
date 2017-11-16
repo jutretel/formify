@@ -1,0 +1,17 @@
+<div class="colums" style="height: 100%; padding: 20px" ng-init="onInit()">
+	<div class="tile is-ancestor is-parent is-vertical">
+		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-class="{'event-myevent': item.user_id == 1}">
+			<!-- Quando tivermos quem está autenticado usamos um user.id da vida em vez de 1 ali -->
+			<div class="card-content event-dash__item">
+				<div class="title event-card__title event__title" >
+					{{item.name}}
+				</div>
+				<div class="subtitle event-card__description event__date">
+					{{item.start_date | date:"dd/MM/yy '-' hh:mma"}}
+					<br>
+					{{item.end_date | date:"dd/MM/yy '-' hh:mma"}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

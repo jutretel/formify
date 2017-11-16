@@ -10,7 +10,7 @@
 <body ng-app="formify">
 	<section class="section is-paddingless total-height">
 		<div class="columns total-height" style="margin: 0;">
-			<div class="column event-dash is-3 has-shadow is-paddingless scrollbar">
+			<div class="column event-dash event-workspace is-3 has-shadow is-paddingless scrollbar">
 				<div class="tabs is-centered">
 					<ul>
 						<li class="is-active event-tab__item">
@@ -22,7 +22,7 @@
 					</ul>
 				</div>
 				<div class="event-dash">
-					<div class="card">
+					<div class="card event-card">
 						<div class="card-content event-dash__item">
 							<h4 class="title event-card__title">
 								Evento
@@ -43,8 +43,9 @@
 				</div>
 			</div>
 			<div class="column is-9 is-paddingless workspace">
+				<div class="workspace-top"></div>
 				<div class="workspace-main">
-        	<div ng-view class="ng-scope"></div>
+        	<div ng-view></div>
 				</div>
         <div class="workspace-footer">
         	<nav class="tabs is-boxed is-fullwidth">
@@ -54,10 +55,10 @@
         	        <a class="footer-menu__item">Criar evento</a>
         	      </li>
         	      <li>
-        	        <a class="footer-menu__item">Locais</a>
+        	        <a class="footer-menu__item">Buscar por nome</a>
         	      </li>
         	      <li>
-        	        <a class="footer-menu__item">Consultar disponibilidade</a>
+        	        <a class="footer-menu__item">Buscar por data</a>
         	      </li>
         	      <li>
         	        <a class="footer-menu__item">Notificações</a>
@@ -91,15 +92,13 @@
 			})  
 		});
 	</script>-->
-
-	<script src="node_modules/angular/angular.min.js"></script>
 	<script src="node_modules/angular-route/angular-route.min.js"></script>
 	<script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
 
 	<!-- flatpickr documentation https://github.com/archsaber/angular-flatpickr-->
-	<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+	<!-- <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
 	<script src="https://unpkg.com/flatpickr"></script>
-	<script src="node_modules/angular-flatpickr/dist/ng-flatpickr.min.js"></script>
+	<script src="node_modules/angular-flatpickr/dist/ng-flatpickr.min.js"></script> -->
 
 
 	<script src="app.js"></script>
@@ -108,13 +107,15 @@
 	<script src="directives/notify/notify.service.js"></script>
 	<script src="services/user.service.js"></script>
 	<script src="services/busy.service.js"></script>
-	<script src="services/constants.factory.js"></script>
 	<script src="services/global.factory.js"></script>
+
+	<script src="services/business/event.business.js"></script>
 
 	<script src="directives/combobox/combobox.directive.js"></script>
 	<script src="directives/notify/notify.directive.js"></script>
 
 	<script src="controllers/login.controller.js"></script>
+	<script src="controllers/eventList.controller.js"></script>
 	
 </body>
 

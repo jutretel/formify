@@ -1,0 +1,13 @@
+.event {
+	&-myevent {
+		left: 42%;
+	}
+
+	&__title {
+		font-size: 18px;
+	}
+
+	&__date {
+		font-size: 14px !important;
+	}
+}

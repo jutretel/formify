@@ -1,16 +1,17 @@
+
 @import "client/node_modules/bulma/sass/utilities/initial-variables";
 
 $primary: $red !default
 $background: $grey-dark !default
 $fmy-grey-light: #a0a0a0 !default
 $fmy-grey-darker: #2F2F2F;
+$fmy-grey: $grey-darker;
 
 html, body{
 	height:100%;
 }
 
- .event-workspace {
-		float: left;
+.event-workspace {
   	height: 100%;
   	position: fixed;
  }
@@ -20,7 +21,7 @@ html, body{
 	background-color: $grey-darker;
 
 	&__item {
-		background-color: $grey-dark;
+		background-color: $background;
 	}
 }
 
@@ -35,15 +36,9 @@ html, body{
 	}
 }
 
-.tabs a:hover {
-    border-bottom-color: $primary !important;
-    color: $primary !important;
-    background-color: #222222;
-}
-
 .event-card {
 	&__content {
-		background-color: $grey-dark !important;
+		background-color: $background !important;
 	}
 
 	&__title {
@@ -66,34 +61,50 @@ html, body{
 			}
 		}
 	}
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .workspace {
 	height: 100%;
-	float: right;
-}
+	margin-left: 25%;
 
-.workspace-main {
-	background-color: $fmy-grey-darker !important;
-	flex-direction: column;
-	height: 100%;
-}
-
-.workspace-footer {
-	position: fixed;
-	bottom: 0;
-	width: 75%;
+	&-top {
+		background-color: $fmy-grey;
+		height: 40px;
+		width: 100%;
+		position: fixed;
+		z-index: 100;
+	}
 	
-	background-color: $grey-darker;
+	&-main {
+		background-color: $fmy-grey-darker !important;
+		margin-bottom: 40px;
+		margin-top: 40px;
+		z-index: 98;
+	}
+	
+	&-footer {
+		position: fixed;
+		bottom: 0;
+		width: 75%;
+		
+		background-color: $fmy-grey;
+	}
+}
+
+// Outras classes
+
+.tabs a:hover {
+    border-bottom-color: $primary !important;
+    color: $primary !important;
+    background-color: #222222;
 }
 
 .footer-menu__item {
 	color: $fmy-grey-light !important;
-}
-
-.roger {
-	padding-top: 10px !important;
-	background-color: $grey-darker;	
 }
 
 .fixed {			
@@ -119,3 +130,4 @@ html, body{
 }
 
 @import "client/node_modules/bulma/bulma.sass";
+@import "templates.scss";

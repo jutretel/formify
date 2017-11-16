@@ -7,7 +7,7 @@ const server = http.createServer(router)
 console.log(path.resolve(__dirname, 'client'))
 router.use(express.static(path.resolve(__dirname, 'client')));
 
-var port = process.env.PORT || 3000;
+var port = 3020 || process.env.PORT;
 
 
 router.use((request, response, next) => {  

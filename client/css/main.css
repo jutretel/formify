@@ -2,7 +2,6 @@ html, body {
   height: 100%; }
 
 .event-workspace {
-  float: left;
   height: 100%;
   position: fixed; }
 
@@ -17,11 +16,6 @@ html, body {
 
 .event-tab__text {
   color: #a0a0a0 !important; }
-
-.tabs a:hover {
-  border-bottom-color: #ff3860 !important;
-  color: #ff3860 !important;
-  background-color: #222222; }
 
 .event-card__content {
   background-color: #4a4a4a !important; }
@@ -40,27 +34,36 @@ html, body {
     .event-card__footer__text:hover {
       color: #ff3860 !important; }
 
+.event-card:hover {
+  cursor: pointer; }
+
 .workspace {
   height: 100%;
-  float: right; }
+  margin-left: 25%; }
+  .workspace-top {
+    background-color: #363636;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    z-index: 100; }
+  .workspace-main {
+    background-color: #2F2F2F !important;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    z-index: 98; }
+  .workspace-footer {
+    position: fixed;
+    bottom: 0;
+    width: 75%;
+    background-color: #363636; }
 
-.workspace-main {
-  background-color: #2F2F2F !important;
-  flex-direction: column;
-  height: 100%; }
-
-.workspace-footer {
-  position: fixed;
-  bottom: 0;
-  width: 75%;
-  background-color: #363636; }
+.tabs a:hover {
+  border-bottom-color: #ff3860 !important;
+  color: #ff3860 !important;
+  background-color: #222222; }
 
 .footer-menu__item {
   color: #a0a0a0 !important; }
-
-.roger {
-  padding-top: 10px !important;
-  background-color: #363636; }
 
 .fixed {
   height: 100%;
@@ -5808,3 +5811,12 @@ label.panel-block {
 .footer {
   background-color: #4a4a4a;
   padding: 3rem 1.5rem 6rem; }
+
+.event-myevent {
+  left: 42%; }
+
+.event__title {
+  font-size: 18px; }
+
+.event__date {
+  font-size: 14px !important; }
