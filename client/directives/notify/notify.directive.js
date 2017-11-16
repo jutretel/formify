@@ -1,5 +1,5 @@
-angular.module('formify').directive('notifyBoard', ['constantsFactory', '$rootScope',
-	function (constantsFactory, $rootScope){
+angular.module('formify').directive('notifyBoard', ['globalFactory', '$rootScope',
+	function (globalFactory, $rootScope){
 		return {
 			restrict:'E',
 			templateUrl:'directives/notify/notify.template.html',
@@ -14,7 +14,7 @@ angular.module('formify').directive('notifyBoard', ['constantsFactory', '$rootSc
 					})
 				}
 
-				scope.$on(constantsFactory.notifyEventKey, function(args, data){
+				scope.$on(globalFactory.notifyEventKey, function(args, data){
 					//add a notification
 					scope.messages.push(data)
 					var index = scope.messages.length - 1

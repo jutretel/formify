@@ -1,6 +1,7 @@
 
 @import "client/node_modules/bulma/sass/utilities/initial-variables";
 
+
 $primary: $red !default
 $background: $grey-dark !default
 $fmy-grey-light: #a0a0a0 !default
@@ -23,6 +24,10 @@ html, body{
 	&__item {
 		background-color: $background;
 	}
+}
+
+.primary-label{
+	color: $primary;
 }
 
 .event-tab {

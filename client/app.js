@@ -4,7 +4,7 @@ angular.module('formify',['ngRoute', 'ngCookies'])
 	
 	$routeProvider
     .when('/login',{templateUrl:'templates/login.html', controller:'loginCtrl'})
-    .when('/event',{templateUrl:'templates/event-show.html', controller:'eventCtrl'})
+    .when('/event',{templateUrl:'templates/event-list.html', controller:'eventCtrl'})
     .when('/',{templateUrl:'templates/event-list.html', controller:'eventListCtrl'})
 
 	$routeProvider.otherwise({redirectTo: '/'})
@@ -17,13 +17,13 @@ function($rootScope, $location, $cookies, $http){
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
         }
  
-        // $rootScope.$on('$locationChangeStart', function (event, next, current) {
-        //     // redirect to login page if not logged in and trying to access a restricted page
-        //     //var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
-        //     var loggedIn = $rootScope.globals.currentUser;
-        //     if (!loggedIn) {
-        //         $location.path('/login');
-        //     }
-        // });
+         $rootScope.$on('$locationChangeStart', function (event, next, current) {
+             // redirect to login page if not logged in and trying to access a restricted page
+             //var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;
+             var loggedIn = $rootScope.globals.currentUser;
+             if (!loggedIn) {
+                 $location.path('/login');
+             }
+         });
 
 }]);

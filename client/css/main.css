@@ -11,6 +11,9 @@ html, body {
   .event-dash__item {
     background-color: #4a4a4a; }
 
+.primary-label {
+  color: #ff3860; }
+
 .event-tab__item {
   width: 50%; }
 
@@ -5820,3 +5823,12 @@ label.panel-block {
 
 .event__date {
   font-size: 14px !important; }
+
+.login__cont {
+  background-color: #363636;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0; }
