@@ -3,6 +3,7 @@ angular.module('formify')
 	function($scope, $location, busyService, userService, notifyService){
 		$scope.data = {}
 
+		window.scope = $scope
 
 		$scope.login = () => {
 			if($scope.data.login == undefined){
