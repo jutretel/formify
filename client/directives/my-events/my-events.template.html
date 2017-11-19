@@ -1,0 +1,37 @@
+<div class="column event-dash event-workspace is-3 has-shadow is-paddingless scrollbar">
+	<div class="tabs is-centered">
+		<ul>
+			<li class="is-active event-tab__item" id="following" ng-click='following()'>
+				<a>Seguindo</a>
+			</li>
+			<li class="event-tab__item" ng-click='myEvents()' id="my-events">
+				<a class="event-tab__text" >Meus</a>
+			</li>
+		</ul>
+	</div>
+	<div class="event-dash">
+		<div ng-repeat="event in events">
+			<div class="card event-card" >
+				<div class="card-content event-dash__item">
+					<h4 class="title event-card__title">
+						{{event.name}}
+					</h4>
+					<div class="subtitle event-card__description">
+						{{event.start_date | date:"dd/MM/yy '-' hh:mma"}} 
+						<br/>
+						{{event.end_date | date:"dd/MM/yy '-' hh:mma"}}
+					</div>
+				</div>
+				<footer class="card-footer event-card__footer event-dash__item">
+					<span class="card-footer-item event-card__footer">
+						<a class="event-card__footer__text">Deixar de seguir</a>
+					</span>
+					<span class="card-footer-item event-card__footer">
+						<a class="event-card__footer__text">Confirmar</a>
+					</span>
+				</footer>
+			</div>
+			<br />
+		</div>
+	</div>
+</div>
