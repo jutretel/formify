@@ -14,7 +14,7 @@
 							</div>
 							<div class="field">
 								<p class="control">
-									<input type="text" class="input has-text-centered" placeholder="Login" ng-model="data.login"/>
+									<input type="text" class="input has-text-centered" placeholder="Email" ng-model="data.email"/>
 								</p>
 							</div>
 							<div class="field">
@@ -22,10 +22,32 @@
 									<input type="password" class="input has-text-centered" placeholder="Senha" ng-model="data.password"/>
 								</p>
 							</div>
+							<div class="field" ng-hide='!create'>
+								<p class="control">
+									<input type="text" class="input has-text-centered" placeholder="Nome" ng-model="data.name"/>
+								</p>
+							</div>
+							
+							<div class="field" ng-hide='create'>
+								<p class="control has-text-centered" ng-click="initCreate();">
+									<a>Cadastrar-se</a>
+								</p>
+							</div>
+							<div class="field" ng-hide='!create'>
+								<p class="control has-text-centered" ng-click="initCreate();">
+									<a>Cancelar</a>
+								</p>
+							</div>
+
 							<hr />
-							<div class="field">
+							<div class="field" ng-hide='create'>
 								<p class="control has-text-centered">
 									<button class="button is-primary" ng-click='login();'>Login</button>
+								</p>
+							</div>
+							<div class="field" ng-hide='!create'>
+								<p class="control has-text-centered">
+									<button class="button is-primary" ng-click="save();">Salvar</button>
 								</p>
 							</div>
 						</div>
