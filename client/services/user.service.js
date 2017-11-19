@@ -23,4 +23,14 @@ angular.module('formify')
 				return data
 			})
 		}
+
+		this.create = (user) => {
+			return $http.get(globalFactory.mainUrl + prefix + 'email/' + user.email)
+			.then(function(data){
+				if(!data.data)
+					return $http.post(globalFactory.mainUrl + prefix, {"user": user})
+				else
+					return { msg: 'Este email já está sendo utilizado' }
+			})
+		}
 	}]);

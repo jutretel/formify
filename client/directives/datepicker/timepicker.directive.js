@@ -1,5 +1,5 @@
 angular.module('formify')
-.directive('datepicker',[function(){
+.directive('timepicker',[function(){
 	return {
 		restrict: 'A',
 		scope:{
@@ -7,13 +7,15 @@ angular.module('formify')
 		},
 		link: function(scope, element, attrs){
 			$("#" + attrs.id).flatpickr({
-			  	noCalendar: false,
-			    dateFormat: 'd/M/y',
+			  	noCalendar: true,
+			    dateFormat: 'h:m',
+			    enableTime: true,
 			    onChange: function(selectedDates, dateStr, instance) {
 			    	scope.selectedDate = selectedDates[0]
 			    	scope.$apply()
 	    		}
 		  	});
+
 		}
 	};
 }]);
