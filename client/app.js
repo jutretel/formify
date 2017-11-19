@@ -5,6 +5,8 @@ angular.module('formify',['ngRoute', 'ngCookies'])
 	$routeProvider
     .when('/login',{templateUrl:'templates/login.html', controller:'loginCtrl'})
     .when('/event',{templateUrl:'templates/event-list.html', controller:'eventCtrl'})
+    .when('/event/new',{templateUrl:'templates/new-event.html', controller:'newEventCtrl'})
+    .when('/search',{templateUrl:'templates/search.html', controller:'searchCtrl'})
     .when('/',{templateUrl:'templates/event-list.html', controller:'eventListCtrl'})
 
 	$routeProvider.otherwise({redirectTo: '/'})

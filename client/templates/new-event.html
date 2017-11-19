@@ -1,0 +1,53 @@
+<div class="colums" style="height: 100%; padding: 20px" ng-init="onInit()">
+	<div class="new-event__title">
+		Novo Evento
+	</div>
+	<div class="field">
+	  <label class="label new-event__field-title">Nome*</label>
+	  <div class="control">
+	    <input class="input" type="text" placeholder="Ex.: Semana Technologica" ng-model="data.name" required=true>
+	  </div>
+	</div>
+	<div class="field new-event__start-date">
+		<label class="label new-event__field-title">Data de início*</label>
+		<input class="input" datepicker id="start_date" selected-date="data.start_date"/>
+	</div>
+	<div class="field new-event__end-date">
+		<label class="label new-event__field-title">Data de encerramento*</label>
+		<input class="input" datepicker id="end_date" selected-date="data.end_date"/>
+	</div>
+	<div class="field new-event__field">
+	  <label class="label new-event__field-title">Local*</label>
+	  <div class="control">
+	    <combobox source='locations' selected-item='data.selectedLocation' display-property='name'/>
+	  </div>
+	</div>
+	<div class="field new-event__field">
+	  <label class="label new-event__field-title">Tipo de evento*</label>
+	  <div class="control">
+	    <combobox source='types' selected-item='data.selectedType' display-property='name'/>
+	  </div>
+	</div>
+	<div class="field new-event__field">
+	  <label class="label new-event__field-title">Descrição</label>
+	  <div class="control">
+	    <textarea class="input" placeholder="Text input" ng-model="data.description"></textarea>
+	  </div>
+	</div>
+	<div class="field new-event__field">
+	  <div class="control">
+	    <label class="checkbox new-event__field-title public">
+	      <input type="checkbox" ng-model="data.is_public">
+	      	Evento Público
+	    </label>
+	  </div>
+	</div>
+	<div class="field is-grouped new-event__field">
+	  <div class="control">
+	    <button class="button" ng-click="create()">Submit</button>
+	  </div>
+	  <div class="control">
+	    <a class="button" href="#!/">Cancel</a>
+	  </div>
+	</div>
+</div>

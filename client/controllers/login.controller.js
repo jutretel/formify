@@ -34,7 +34,7 @@ angular.module('formify')
 						return;
 					}
 
-					$location.path('/event')
+					$location.path('/')
 				})
 			)
 		}

@@ -6,10 +6,11 @@ angular.module('formify')
 
 		//get a user by his login and password
 		this.getUserByLogin = function(login, password){
-			return $http.post(globalFactory.mainUrl + prefix + '/login', {
+			return $http.post(globalFactory.mainUrl + prefix + 'login', {
 				email: login,
 				password: password
 			}).then((data)=>{
+				console.log(data.data)
 				if(data.data != undefined){
 					//Salva os dados do usuario no cookie
 					AuthService.SetCredentials(login, password, data.data.id)

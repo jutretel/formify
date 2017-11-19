@@ -8,7 +8,9 @@ angular.module('formify')
 		link: function(scope, element, attrs){
 			$("#" + attrs.id).flatpickr({
 			  	noCalendar: false,
-			    dateFormat: 'd/M/y',
+			    dateFormat: 'd/m/y H:i',
+			    enableTime: true,
+			    minDate: Date.now(),
 			    onChange: function(selectedDates, dateStr, instance) {
 			    	scope.selectedDate = selectedDates[0]
 			    	scope.$apply()

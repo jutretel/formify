@@ -23,3 +23,36 @@
 		left:0;
 	}
 }
+
+.new-event {
+	&__start-date {
+		width: 45%;
+		float: left;
+	}
+
+	&__end-date {
+		width: 45%;
+		float: right;
+	}
+
+	&__title {
+		color: $fmy-grey-light;
+		font-size: 20px;
+		font-weight: 600;
+	}
+
+	&__field {
+		width: 100%;
+		float: left;
+
+		&-title {
+			color: $fmy-grey-light;
+		}
+
+		.public {
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+}

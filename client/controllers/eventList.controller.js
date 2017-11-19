@@ -1,7 +1,8 @@
 angular.module('formify')
-.controller('eventListCtrl',['$scope', 'eventBusiness', function ($scope, eventBusiness) {
+.controller('eventListCtrl',['$scope', 'eventBusiness', 'LocalStorage', 'globalFactory', 
+	function ($scope, eventBusiness, LocalStorage, globalFactory) {
 	$scope.onInit = function () {
-		window.scope = $scope
+		$scope.userId = LocalStorage.getValue(globalFactory.userKey).id
 		eventBusiness.getAll().then((events) => {
 			$scope.items = events.data
 			

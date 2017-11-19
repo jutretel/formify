@@ -1,0 +1,46 @@
+<div class="colums" style="height: 100%; padding: 20px" ng-init="onInit()">
+	<div class="field new-event__field">
+	  <label class="label new-event__field-title">Tipo de busca</label>
+	  <div class="control">
+	    <combobox source='options' selected-item='data.selectedOption' display-property='name'/>
+	  </div>  
+	</div>
+	<div class="field ng-hide" ng-hide="eventName">
+	  <label class="label new-event__field-title">Nome</label>
+	  <div class="control">
+	    <input class="input" type="text" placeholder="Ex.: Semana Technologica" ng-model="data.search" required=true>
+	  </div>
+	</div>
+	<div class="field ng-hide new-event__start-date" ng-hide="eventDate">
+		<label class="label new-event__field-title">Data</label>
+		<input class="input" datepicker id="start_date" selected-date="data.search"/>
+	</div>
+	<div class="field new-event__field ng-hide" ng-hide="eventLocation">
+	  <label class="label new-event__field-title">Local do evento</label>
+	  <div class="control">
+	    <combobox source='locations' selected-item='data.search' display-property='name'/>
+	  </div>
+	</div>
+	<div class="field is-grouped new-event__field">
+	  <div class="control">
+	    <button class="button" ng-click="search()">Submit</button>
+	  </div>
+	  <div class="control">
+	    <a class="button" href="#!/">Cancel</a>
+	  </div>
+	</div>
+	<div class="tile is-ancestor is-parent is-vertical">
+		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-class="{'event-myevent': item.user_id == userId}">
+			<div class="card-content event-dash__item">
+				<div class="title event-card__title event__title" >
+					{{item.name}}
+				</div>
+				<div class="subtitle event-card__description event__date">
+					{{item.start_date | date:"dd/MM/yy '-' hh:mma"}}
+					<br>
+					{{item.end_date | date:"dd/MM/yy '-' hh:mma"}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
