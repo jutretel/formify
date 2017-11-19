@@ -10,38 +10,7 @@
 <body ng-app="formify">
 	<section class="section is-paddingless total-height">
 		<div class="columns total-height" style="margin: 0;">
-			<div class="column event-dash event-workspace is-3 has-shadow is-paddingless scrollbar">
-				<div class="tabs is-centered">
-					<ul>
-						<li class="is-active event-tab__item">
-							<a>Seguindo</a>
-						</li>
-						<li class="event-tab__item">
-							<a class="event-tab__text">Meus</a>
-						</li>
-					</ul>
-				</div>
-				<div class="event-dash">
-					<div class="card event-card">
-						<div class="card-content event-dash__item">
-							<h4 class="title event-card__title">
-								Evento
-							</h4>
-							<div class="subtitle event-card__description">
-								10/10/17 - 12/12/17
-							</div>
-						</div>
-						<footer class="card-footer event-card__footer event-dash__item">
-							<span class="card-footer-item event-card__footer">
-								<a class="event-card__footer__text">Deixar de seguir</a>
-							</span>
-							<span class="card-footer-item event-card__footer">
-								<a class="event-card__footer__text">Confirmar</a>
-							</span>
-						</footer>
-					</div>
-				</div>
-			</div>
+			<my-events></my-events>
 			<div class="column is-9 is-paddingless workspace">
 				<div class="workspace-top"></div>
 				<div class="workspace-main">
@@ -116,6 +85,7 @@
 	<script src="directives/combobox/combobox.directive.js"></script>
 	<script src="directives/notify/notify.directive.js"></script>
 	<script src="directives/datepicker/datepicker.directive.js"></script>
+	<script src="directives/my-events/my-events.directive.js"></script>
 
 	<script src="controllers/login.controller.js"></script>
 	<script src="controllers/eventList.controller.js"></script>

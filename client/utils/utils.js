@@ -31,6 +31,7 @@ angular.module('formify')
 
             $rootScope.globals = {
                 currentUser: {
+                    id:id,
                     username: username,
                     authdata: authdata
                 }
