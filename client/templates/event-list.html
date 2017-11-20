@@ -3,7 +3,7 @@
 		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-class="{'event-myevent': item.user_id == userId}">
 			<!-- Quando tivermos quem está autenticado usamos um user.id da vida em vez de 1 ali -->
 			<div class="card-content event-dash__item">
-				<div class="title event-card__title event__title" >
+				<div class="event-card__title event__title" >
 					{{item.name}}
 				</div>
 				<div class="subtitle event-card__description event__date">
