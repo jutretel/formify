@@ -1,0 +1,52 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+	<div class="navbar-start">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<a href="#!/person/list">Voltar</a>
+		</div>
+	</div>
+</nav>
+
+<section class="section">
+	<div class="columns">
+		<div class="column is-4">
+			<h1 class="event-card__title is-primary">Dados pessoais</h1>
+		</div>
+		<div class="column is-8">
+			<h1 class="event-card__title is-primary">Deseja convidar este usuário para um evento?</h1>
+		</div>
+	</div>
+	<br>
+	<div class="columns">
+		<div class="column is-4">
+			<div class="field">
+				<label class="event-card__title">Name</label>
+				<div class="control event-card__title">
+					{{user.name}}
+				</div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Email</label>
+				<div class="control event-card__title">
+					{{user.email}}
+				</div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Rating</label>
+				<div class="control event-card__title">
+					{{user.rating}}
+				</div>
+			</div>
+		</div>
+		<div class="column is-8">
+			<div class="field">
+				<label class="event-card__title">Meus eventos</label>
+				<div class="control event-card__title">
+					<combobox source='myEvents' selected-item='selectedEvent' display-property='name'/>
+				</div>
+			</div>
+			<div class="field">
+				<button class="button is-primary" ng-click='invite()'>Convidar</button>
+			</div>
+		</div>
+	</div>
+</section>
