@@ -34,4 +34,13 @@ angular.module('formify')
 					return { msg: 'Este email já está sendo utilizado' }
 			})
 		}
+
+		this.searchByName = (name) => {
+			let method = name == "" ? '' : 'name/' + name
+			return $http.get(globalFactory.mainUrl + prefix + method)
+		}
+
+		this.get = (userId) => {
+			return $http.get(globalFactory.mainUrl + prefix + '/' + userId)
+		}
 	}]);

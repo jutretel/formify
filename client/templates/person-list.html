@@ -1,0 +1,45 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+	<div class="navbar-start">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<a href="#!/">Voltar</a>
+		</div>
+	</div>
+	<div class="navbar-end">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<input type="text" class="input" ng-model='data.name' placeholder="Nome">
+		</div>
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<button class="button is-primary" ng-click='search()'>Buscar</button>
+		</div>
+	</div>
+</nav>
+<section class="section">
+	<table class="table is-fullwidth">
+		<thead>
+			<tr>
+				<th>
+					Nome
+				</th>
+				<th>
+					Email
+				</th>
+				<th>
+					Rating
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat='user in users'>
+				<td>
+					<a href="/#!/person/list/{{user.id}}">{{user.name}}</a>
+				</td>
+				<td>
+					{{user.email}}
+				</td>
+				<td>
+					{{user.rating}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>

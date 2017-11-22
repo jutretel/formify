@@ -12,9 +12,9 @@
 		<div class="columns total-height" style="margin: 0;">
 			<my-events></my-events>
 			<div class="column is-9 is-paddingless workspace">
-				<div class="workspace-top"></div>
+				<!--<div class="workspace-top"></div>-->
 				<div class="workspace-main">
-        	<div ng-view></div>
+        			<div ng-view></div>
 				</div>
         <div class="workspace-footer">
         	<nav class="tabs is-boxed is-fullwidth">
@@ -24,7 +24,10 @@
         	        <a class="footer-menu__item" href="/#!/event/new">Criar evento</a>
         	      </li>
         	      <li>
-        	        <a class="footer-menu__item" href="/#!/search">Buscar</a>
+        	        <a class="footer-menu__item" href="/#!/search">Buscar Evento</a>
+        	      </li>
+        	      <li>
+        	        <a class="footer-menu__item" href="/#!/person/list">Pessoa</a>
         	      </li>
         	      <li>
         	        <a class="footer-menu__item">Certificados</a>
@@ -92,6 +95,8 @@
 	<script src="controllers/newEvent.controller.js"></script>
 	<script src="controllers/event.controller.js"></script>
 	<script src="controllers/search.controller.js"></script>
+	<script src="controllers/personList.controller.js"></script>
+	<script src="controllers/personDetails.controller.js"></script>
 	
 </body>
 
