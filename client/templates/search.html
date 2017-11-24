@@ -1,3 +1,11 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+	<div class="navbar-start">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<a href="#!/">Voltar</a>
+		</div>
+	</div>
+</nav>
+
 <div class="colums" style="height: 100%; padding: 20px" ng-init="onInit()">
 	<div class="field new-event__field">
 	  <label class="label new-event__field-title">Tipo de busca</label>
@@ -30,9 +38,9 @@
 	  </div>
 	</div>
 	<div class="tile is-ancestor is-parent is-vertical">
-		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-class="{'event-myevent': item.user_id == userId}">
+		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-click="open(item)" ng-class="{'event-myevent': item.user_id == userId}" ng-show="item.is_public || item.user_id == userId">
 			<div class="card-content event-dash__item">
-				<div class="title event-card__title event__title" >
+				<div class="event-card__title event__title" >
 					{{item.name}}
 				</div>
 				<div class="subtitle event-card__description event__date">

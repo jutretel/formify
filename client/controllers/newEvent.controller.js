@@ -14,8 +14,6 @@ function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyS
 		})
 	}
 
-	window.scope = $scope
-
 	$scope.create = function () {
 		$scope.data.status = "Open"
 		$scope.data.rating = 5

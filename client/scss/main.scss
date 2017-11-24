@@ -156,5 +156,9 @@ html, body{
 	height: 100% !important;
 }
 
+.is-dark {
+	background-color: $fmy-grey !important;
+}
+
 @import "client/node_modules/bulma/bulma.sass";
 @import "templates.scss";

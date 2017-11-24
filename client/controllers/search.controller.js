@@ -23,6 +23,7 @@ angular.module('formify')
 	})
 
 	$scope.onInit = function () {
+		$scope.userId = LocalStorage.getValue(globalFactory.userKey).id
 		eventBusiness.getLocations().then((locations) => {
 			$scope.locations = locations.data
 		})
@@ -44,7 +45,10 @@ angular.module('formify')
 		
 		eventBusiness.searchEvent($scope.data.selectedOption.route, $scope.data.search).then((events) => {
 			$scope.items = events.data
-			console.log($scope.items)
 		})
+	}
+
+	$scope.open = function (event) {
+		 $location.path('event/' + event.id)
 	}
 }])

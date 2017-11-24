@@ -1,0 +1,76 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+	<div class="navbar-start">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<a href="#!/">Voltar</a>
+		</div>
+	</div>
+</nav>
+
+<section class="section" ng-init="onInit()">
+	<div class="columns">
+		<div class="column">
+			<h1 class="event-card__title is-primary">{{event.name}}</h1>
+		</div>
+	</div>
+	<br>
+	<div class="columns">
+		<div class="column is-4">
+			<div class="field">
+				<label class="event-card__title">Dono</label>
+				<div class="control event-card__description">
+					{{user.name}}
+				</div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Data</label>
+				<div class="control event-card__description">
+					{{event.start_date | date:"dd/MM/yy '-' hh:mma"}}
+					<br>
+					até
+					<br>
+					{{event.end_date | date:"dd/MM/yy '-' hh:mma"}}
+				</div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Local</label>
+				<div class="control event-card__description">
+					{{location.name}}
+				</div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Descrição</label>
+				<div class="control event-card__description">
+					{{event.description}}
+				</div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Rating</label>
+				<div class="control event-card__description">
+					{{event.rating}}
+				</div>
+			</div>
+		</div>
+		<div class="column is-8 ng-hide" ng-hide="myEvent">
+			<div class="field">
+				<button class="button btn-action__my-event">Editar</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action__my-event">Deletar</button>
+			</div>
+		</div>
+		<div class="column is-8 ng-hide" ng-show="myEvent">
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed'">Confirmar Presença</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Rate</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-interest" ng-click="interest()" ng-show="event.status == 'Open'">Marcar Interesse</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-subscribe" ng-click="subscription()" ng-show="event.status == 'Open'">Inscrever-se</button>
+			</div>
+		</div>
+	</div>
+</section>
