@@ -1,0 +1,52 @@
+<div class="colums" style="height: 100%; padding: 20px" ng-init="onInit()">
+	<div class="field new-certificate__field">
+	  <label class="label new-event__field-title">Nome do Evento*</label>
+	  <div class="control">
+	    <input class="input" type="text" placeholder="Ex.: Semana Technologica" ng-model="data.name" required=true>
+	  </div>  
+	</div>
+	<div class="field new-event__field">
+	  <label class="label new-event__field-title">Participantes*</label>
+	  <div class="control">
+	    <textarea class="input" placeholder="Ex: Paulo Bauer, Julia Tretel, Yuri Oliveira, Victor George" ng-model="data.participants" required=true></textarea>
+	  </div>
+	</div>
+	<div class="field new-event__field">
+	  <label class="label new-event__field-title">Tipo de evento*</label>
+	  <div class="control">
+	    <combobox source='types' selected-item='data.selectedType' display-property='name'/>
+	  </div>
+	</div>
+	<div class="field new-event__field ng-hide" ng-hide="eventType">
+	  <label class="label new-event__field-title">Especifique o tipo do evento*</label>
+	  <div class="control">
+	    <input class="input" type="text" selected-item='data.selectedSpecificType' required=true>
+	  </div>
+	</div>
+	<div class="field new-certificate__field">
+	  <label class="label new-event__field-title">Duração do Evento(em horas)*</label>
+	  <div class="control">
+	    <input class="input" type="text" placeholder="Ex: 2,5" ng-model="data.time" required=true>
+	  </div>
+	</div>
+	<div class="field is-grouped new-certificate__field">
+	  <div class="control">
+	    <button class="button" ng-click="create()">Gerar Certificado</button>
+	  </div>
+	  <div class="control">
+	    <a class="button" href="#!/">Cancelar</a>
+	  </div>
+	</div>
+	<div style="width:800px; height:600px; padding:20px; text-align:center; border: 10px solid #787878" ng-repeat='name in parts'>
+	<div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
+	       <span style="font-size:50px; font-weight:bold">Certificado de Conclusão</span>
+	       <br><br>
+	       <span style="font-size:25px"><i>Certificamos que</i></span>
+	       <br><br>
+	       <span style="font-size:30px"><b>{{name}}</b></span><br/><br/>
+	       <span style="font-size:25px"><i>Completou a(o) {{data.selectedType.name}}</i></span> <br/><br/>
+	       <span style="font-size:30px">{{data.name}}</span> <br/><br/>
+	       <span style="font-size:20px">com a duração de <b>{{data.time}} horas</b></span> <br/><br/><br/><br/>
+	</div>
+	</div>
+</div>
