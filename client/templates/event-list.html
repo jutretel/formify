@@ -1,8 +1,14 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+	<div class="navbar-start">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+		</div>
+	</div>
+</nav>
+
 <div class="colums" style="height: 100%; padding: 20px" ng-init="onInit()">
 	<div class="tile is-ancestor is-parent is-vertical">
-		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-class="{'event-myevent': item.user_id == userId}">
-			<!-- Quando tivermos quem está autenticado usamos um user.id da vida em vez de 1 ali -->
-			<div class="card-content event-dash__item">
+		<div class="card is-child tile is-7 event-card" ng-repeat="item in items | orderBy:'-start_date'" ng-class="{'event-myevent': item.user_id == userId}" ng-show="item.is_public || item.user_id == userId">
+			<div class="card-content event-dash__item" ng-click="open(item)">
 				<div class="event-card__title event__title" >
 					{{item.name}}
 				</div>

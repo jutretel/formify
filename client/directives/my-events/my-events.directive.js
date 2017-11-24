@@ -31,6 +31,10 @@ angular.module('formify').directive('myEvents', [function(){
 					})
 			}
 
+			$scope.open = function (event) {
+				 $location.path('event/' + event.id)
+			}
+
 			$scope.following = () => {
 				following = true
 				$("#my-events").removeClass('is-active')

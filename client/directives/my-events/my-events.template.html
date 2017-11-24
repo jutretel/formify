@@ -11,8 +11,8 @@
 			</ul>
 		</div>
 		<div class="event-dash">
-			<div ng-repeat="event in events">
-				<div class="card event-card" >
+			<div ng-repeat="event in events" ng-click="open(event)">
+				<div class="card event-card">
 					<div class="card-content event-dash__item">
 						<h4 class="event-card__title">
 							{{event.name}}

@@ -8,6 +8,7 @@ angular.module('formify',['ngRoute', 'ngCookies'])
     .when('/event',{templateUrl:'templates/event-list.html', controller:'eventCtrl'})
     .when('/event/new',{templateUrl:'templates/new-event.html', controller:'newEventCtrl'})
     .when('/search',{templateUrl:'templates/search.html', controller:'searchCtrl'})
+    .when('/event/:eventId',{templateUrl:'templates/event-details.html', controller:'eventDetailsCtrl'})
     .when('/certificate',{templateUrl:'templates/certificate.html', controller:'certificateCtrl'})
     .when('/',{templateUrl:'templates/event-list.html', controller:'eventListCtrl'})
 
