@@ -1,8 +1,9 @@
 angular.module('formify')
-.controller('certificateCtrl',['$scope', 'eventBusiness', 'LocalStorage', 'globalFactory', 'notifyService', 
-	function ($scope, eventBusiness, LocalStorage, globalFactory, notifyService) {
+.controller('certificateCtrl',['$scope', 'eventBusiness', 'LocalStorage', 'globalFactory', 'notifyService', '$location',
+	function ($scope, eventBusiness, LocalStorage, globalFactory, notifyService, $location) {
 
 	$scope.data = {}
+	$scope.parts = []
 
 	$scope.$watch('data.selectedType', function(){
 	if($scope.data.selectedType){
@@ -42,5 +43,7 @@ angular.module('formify')
 			notifyService.notify('danger', 'Erro', 'Preencha a duração do evento')
 			return;
 		}
+		var comma = ', '
+		$scope.parts = $scope.data.participants.split(comma)
 	}
 }])

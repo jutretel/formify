@@ -37,4 +37,16 @@
 	    <a class="button" href="#!/">Cancelar</a>
 	  </div>
 	</div>
+	<div style="width:800px; height:600px; padding:20px; text-align:center; border: 10px solid #787878" ng-repeat='name in parts'>
+	<div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
+	       <span style="font-size:50px; font-weight:bold">Certificado de Conclusão</span>
+	       <br><br>
+	       <span style="font-size:25px"><i>Certificamos que</i></span>
+	       <br><br>
+	       <span style="font-size:30px"><b>{{name}}</b></span><br/><br/>
+	       <span style="font-size:25px"><i>Completou a(o) {{data.selectedType.name}}</i></span> <br/><br/>
+	       <span style="font-size:30px">{{data.name}}</span> <br/><br/>
+	       <span style="font-size:20px">com a duração de <b>{{data.time}} horas</b></span> <br/><br/><br/><br/>
+	</div>
+	</div>
 </div>
