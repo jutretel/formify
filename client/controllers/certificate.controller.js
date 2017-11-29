@@ -45,7 +45,6 @@ angular.module('formify')
 		}
 
 		if ($scope.data.selectedType.name == 'Outro'){
-			console.log($scope.data.selectedSpecificType)
 			$scope.data.selectedType.name = $scope.data.selectedSpecificType
 		}
 		var comma = ', '
