@@ -51,5 +51,9 @@ angular.module('formify')
 		this.searchEvent = (route, search) => {
 			return $http.get(globalFactory.mainUrl + route + search)
 		}
+
+		this.verifyLocations = (start, end) => {
+			return $http.get(globalFactory.mainUrl + 'locations/' + start + '/' + end)
+		}
 	}
 ])
