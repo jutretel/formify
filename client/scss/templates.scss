@@ -41,6 +41,12 @@
 		font-weight: 600;
 	}
 
+	&__sugestions {
+		color: $fmy-grey-light;
+		font-size: 14px;
+		font-weight: 400;
+	}
+
 	&__field {
 		width: 100%;
 		float: left;

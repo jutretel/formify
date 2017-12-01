@@ -3,6 +3,7 @@ angular.module('formify')
 function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyService) {
 
 	$scope.data = {}
+	$scope.sugestions = false
 
 	$scope.onInit = function () {
 		eventBusiness.getLocations().then((locations) => {
@@ -12,6 +13,7 @@ function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyS
 		eventBusiness.getEventTypes().then((types) => {
 			$scope.types = types.data
 		})
+
 	}
 
 	$scope.create = function () {
@@ -39,13 +41,30 @@ function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyS
 			return;
 		}
 
-		// FALTA VERIFICAÇÃO POR LOCAL/DATA
-		// FALTA PARTE DE CONVITES POR EMAIL
+		eventBusiness.verifyLocations($scope.data.start_date, $scope.data.end_date)
+		.then((locations) => {
+			$scope.availablesLocations = locations.data
 
-		$scope.data.event_type_id = $scope.data.selectedType.id
-		$scope.data.location_id = $scope.data.selectedLocation.id
-		eventBusiness.createEvent($scope.data)
+			location_ids = $scope.availablesLocations.map(function(location) {
+				return location.id
+			})
 
-		$location.path('/')
+			location_names = $scope.availablesLocations.map(function(location) {
+				return location.name
+			})
+
+			if (!location_ids.includes($scope.data.selectedLocation.id)) {
+				notifyService.notify('danger', 'Erro', 'Local indisponível para essa data, ver sugestões')
+				$scope.sugestions = true
+				$('#locationSugestions').text("Sugestões: " + location_names.join(", "))
+				return;
+			}
+
+			$scope.data.event_type_id = $scope.data.selectedType.id
+			$scope.data.location_id = $scope.data.selectedLocation.id
+			eventBusiness.createEvent($scope.data)
+
+			$location.path('/')
+		})
 	}
 }])

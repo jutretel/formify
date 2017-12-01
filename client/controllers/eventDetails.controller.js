@@ -27,6 +27,9 @@ angular.module('formify')
 						$scope.user = user.data
 						$scope.data.user_id = $scope.user_id
 
+						// scope event user_id CRIADOR DO EVENTO
+						// scope user_id USUARIO LOGADO
+
 						if ($scope.event.user_id == $scope.user_id) {
 							$scope.myEvent = false
 						}
