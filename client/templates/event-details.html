@@ -49,6 +49,23 @@
 					{{event.rating}}
 				</div>
 			</div>
+			<div class="field new-comment__field" ng-show="isPublic">
+			  <label class="event-card__title">Adicionar um comentário</label>
+			  <div class="control">
+			    <textarea class="input"  ng-model="data.content" required=true></textarea>
+			  </div>
+			</div>
+			<div class="field is-grouped new-comment__field" ng-show="isPublic">
+			  <div class="control">
+			    <button class="button" ng-click="comment()">Comentar</button>
+			  </div>
+			</div>
+			<div class="field">
+				<label class="event-card__title">Comentários</label>
+				<div class="control event-card__description">
+					{{comments.user_id}} - {{comments.content}}
+				</div>
+			</div>
 		</div>
 		<div class="column is-8 ng-hide" ng-hide="myEvent">
 			<div class="field">
