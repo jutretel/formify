@@ -14,6 +14,7 @@ angular.module('formify',['ngRoute', 'ngCookies'])
 
     .when('/person/list',{templateUrl:'templates/person-list.html', controller:'personListCtrl'})
     .when('/person/list/:personId',{templateUrl:'templates/person-details.html', controller:'userDetailsCtrl'})
+    .when('/notification/list',{templateUrl:'templates/notification-list.html', controller:'notificationListCtrl'})
     
 
 	$routeProvider.otherwise({redirectTo: '/'})
