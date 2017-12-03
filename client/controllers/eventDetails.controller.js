@@ -1,18 +1,28 @@
 angular.module('formify')
-.controller('eventDetailsCtrl',['$scope', 'eventBusiness', 'userService', 'LocalStorage', 'globalFactory', '$routeParams', '$route',
-	function ($scope, eventBusiness, userService, LocalStorage, globalFactory, $routeParams, $route) {
-	
+.controller('eventDetailsCtrl',['$scope', 'eventBusiness', 'userService', 'LocalStorage', 'globalFactory', '$routeParams', '$route', 'notifyService',
+	function ($scope, eventBusiness, userService, LocalStorage, globalFactory, $routeParams, $route, notifyService) {
+
 	$scope.onInit = function () {
 		$scope.user_id = LocalStorage.getValue(globalFactory.userKey).id
 
 		$scope.data = {}
 		$scope.myEvent = true
+		$scope.isPublic = true
+
+		eventBusiness.getComments($routeParams.eventId)
+		.then(function (comment) {
+			if (comment.data) {
+				$scope.comments = comment.data
+			}
+		})
 
 		eventBusiness.getEventById($routeParams.eventId)
 		.then(function (event) {
 			if (event.data) {
 				$scope.event = event.data
 				$scope.data.event_id = $scope.event.id
+				if ($scope.event.is_public == false) 
+							$scope.isPublic = false
 				
 				eventBusiness.getLocation($scope.event.location_id)
 				.then(function (location) {
@@ -90,10 +100,21 @@ angular.module('formify')
 						}
 						$route.reload()
 					}
+
+					
 				})
 
 			}
 		})
+	}
+	$scope.comment = function () {
+		if ($scope.data.content == undefined) {
+			notifyService.notify('danger', 'Erro', 'Preencha o comentário')
+			return;
+		}
+		else
+			eventBusiness.createComment($scope.data)
+			$route.reload()
 	}
 
 }])
