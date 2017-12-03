@@ -1,12 +1,11 @@
 {
   "name": "angular-app",
   "version": "1.0.0",
-  "description": "a angular client",
-  "main": "index.js",
+  "description": "an angular client",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.6",
