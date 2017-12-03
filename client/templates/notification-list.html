@@ -1,0 +1,24 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+	<div class="navbar-start">
+		<div class="navbar-item" style="padding-top: 10px; padding-right: 10px;">
+			<a href="#!/">Voltar</a>
+		</div>
+	</div>
+</nav>
+<section class="section">
+	<table class="table is-fullwidth">
+		<thead>
+			<tr>
+				<th>
+					Descrição
+				</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat='not in nots'>
+				<td>
+					{{not.description}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>

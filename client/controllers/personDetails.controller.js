@@ -1,11 +1,20 @@
 angular.module('formify')
 .controller('userDetailsCtrl', [
-	'userService', 'busyService', '$scope', '$location', '$routeParams', 'eventBusiness',
-	function(userService, busyService, $scope, $location, $routeParams, eventBusiness){
+	'userService', 'busyService', '$scope', '$location', '$routeParams', 
+	'eventBusiness', 'notificationBusiness', 'notifyService',
+	function(userService, busyService, $scope, $location, $routeParams, 
+		eventBusiness, notificationBusiness, notifyService){
 		$scope.myEvents = []
 
 		$scope.invite = () => {
+			if(!$scope.selectedEvent){
+				notifyService.notify('danger', 'Erro', 'Selecione um evento')
+				return
+			}
 
+			busyService.wrap(
+				notificationBusiness.createEventNotification($scope.selectedEvent.id, $routeParams.personId)
+			)
 		}
 
 		busyService.wrap(
