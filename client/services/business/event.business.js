@@ -32,6 +32,25 @@ angular.module('formify')
 		}
 
 		this.createEvent = (event) => {
+			if (event.name == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o nome do evento')
+				return;
+			}
+			
+			if (event.selectedType == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o local do evento')
+				return;
+			}
+
+			if (event.selectedLocation == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o tipo de evento')
+				return;
+			}
+
+			if (event.start_date == undefined || event.end_date == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha as datas do evento')
+				return;
+			}
 			return $http.post(globalFactory.mainUrl + 'events', {event:event})
 		}
 

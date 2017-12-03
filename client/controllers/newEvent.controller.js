@@ -20,27 +20,6 @@ function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyS
 		$scope.data.status = "Open"
 		$scope.data.rating = 5
 		$scope.data.user_id = LocalStorage.getValue(globalFactory.userKey).id
-
-		if ($scope.data.name == undefined) {
-			notifyService.notify('danger', 'Erro', 'Preencha o nome do evento')
-			return;
-		}
-		
-		if ($scope.data.selectedType == undefined) {
-			notifyService.notify('danger', 'Erro', 'Preencha o local do evento')
-			return;
-		}
-
-		if ($scope.data.selectedLocation == undefined) {
-			notifyService.notify('danger', 'Erro', 'Preencha o tipo de evento')
-			return;
-		}
-
-		if ($scope.data.start_date == undefined || $scope.data.end_date == undefined) {
-			notifyService.notify('danger', 'Erro', 'Preencha as datas do evento')
-			return;
-		}
-
 		eventBusiness.verifyLocations($scope.data.start_date, $scope.data.end_date)
 		.then((locations) => {
 			$scope.availablesLocations = locations.data
