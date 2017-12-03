@@ -31,6 +31,10 @@ angular.module('formify')
 			return $http.get(globalFactory.mainUrl + 'event_types')
 		}
 
+		this.getEventType = (id) => {
+			return $http.get(globalFactory.mainUrl + 'event_types/' + id)
+		}
+
 		this.createEvent = (event) => {
 			if (event.name == undefined) {
 				notifyService.notify('danger', 'Erro', 'Preencha o nome do evento')
@@ -81,6 +85,14 @@ angular.module('formify')
 		
 		this.verifyLocations = (start, end) => {
 			return $http.get(globalFactory.mainUrl + 'locations/' + start + '/' + end)
+		}
+
+		this.deleteEvent = (id) => {
+			return $http.delete(globalFactory.mainUrl + 'events/' + id)
+		}
+
+		this.editEvent = (event) => {
+			return $http.put(globalFactory.mainUrl + 'events/' + event.event_id, {event:event})
 		}
 	}
 ])
