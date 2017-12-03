@@ -18,8 +18,6 @@ angular.module('formify')
 				scope.selectedItem = item
 				scope.selectedText = item[scope.displayProperty]
 
-				console.log(item)
-
 				//callbacks
 				var func = scope.callback()
 				if(func)

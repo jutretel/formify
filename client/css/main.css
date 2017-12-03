@@ -5867,6 +5867,11 @@ label.panel-block {
   font-size: 20px;
   font-weight: 600; }
 
+.new-event__sugestions {
+  color: #a0a0a0;
+  font-size: 14px;
+  font-weight: 400; }
+
 .new-event__field {
   width: 100%;
   float: left; }

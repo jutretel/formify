@@ -59,5 +59,9 @@ angular.module('formify')
 		this.getComments = (id) => {
 			return $http.get(globalFactory.mainUrl + 'comments/event/' + id)
 		}
+		
+		this.verifyLocations = (start, end) => {
+			return $http.get(globalFactory.mainUrl + 'locations/' + start + '/' + end)
+		}
 	}
 ])
