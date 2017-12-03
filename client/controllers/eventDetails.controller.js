@@ -12,7 +12,6 @@ angular.module('formify')
 		eventBusiness.getComments($routeParams.eventId)
 		.then(function (comment) {
 			if (comment.data) {
-				console.log(comment.data)
 				$scope.comments = comment.data
 			}
 		})

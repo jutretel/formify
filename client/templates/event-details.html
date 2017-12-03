@@ -61,9 +61,9 @@
 			  </div>
 			</div>
 			<div class="field">
-				<label class="event-card__title">Comentários</label>
-				<div class="control event-card__description">
-					{{comments.user_id}} - {{comments.content}}
+				<label class="event-card__title" >Comentários</label>
+				<div class="control event-card__description" ng-repeat='comment in comments'>
+					{{comment[1].name}} - {{comment[0].content}}
 				</div>
 			</div>
 		</div>
