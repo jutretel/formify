@@ -51,7 +51,19 @@
 				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed'">Confirmar Presença</button>
 			</div>
 			<div class="field">
-				<button class="button btn-action ng-hide" id="button-rating" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Rate</button>
+				<label class="event-card__title" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Selecione quem deseja avaliar</label>
+			</div>	
+			<div class="field">
+				<combobox source='optionsRated' selected-item='data.selectRating' display-property='name' ng-show="event.status == 'Closed' && participation == 'Confirmed'"/></combobox>
+		   </div>	
+			<div class="field">
+				<label class="event-card__title" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Selecione a nota</label>
+			</div>
+			<div class="field">
+					<combobox source='optionsRate' selected-item='data.selectRate' display-property='name' ng-show="event.status == 'Closed' && participation == 'Confirmed'"/>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-rating" ng-click="rate()" ng-show="event.status == 'Closed' && participation == 'Confirmed'" >Rate</button></button>
 			</div>
 			<div class="field">
 				<button class="button btn-action ng-hide" id="button-interest" ng-click="interest()" ng-show="event.status == 'Open'">Marcar Interesse</button>
@@ -75,34 +87,61 @@
 					{{event.rating}}
 				</div>
 			</div>
-			<div class="field new-comment__field" ng-show="isPublic">
+			<div class="field new-comment__field" ng-show="isPublic && showComments">
 			  <label class="event-card__title">Adicionar um comentário</label>
 			  <div class="control">
 			    <textarea class="input"  ng-model="data.content" required=true></textarea>
 			  </div>
 			</div>
-			<div class="field is-grouped new-comment__field" ng-show="isPublic">
+			<div class="field new-comment__field" ng-show="isPublic && showComments">
+			  <label class="event-card__title">Mencionar</label>
+			  <div class="control">
+			    <textarea class="input" placeholder="Ex: julia@email.com.br, victor@mail.com.br"  ng-model="data.mention" required=true></textarea>
+			  </div>
+			</div>
+			<div class="field is-grouped new-comment__field" ng-show="isPublic && showComments">
 			  <div class="control">
 			    <button class="button" ng-click="comment()">Comentar</button>
 			  </div>
 			</div>
-				<div class="field">
-					<label class="event-card__title" >Comentários</label>
-				<table class="table is-fullwidth">
-					<tbody>
-						<tr ng-repeat="comment in comments | orderBy:'-[0].created_at'">
-							<td style="width: 7%">
-								<a href="#!/person/list/{{comment[1].id}}">{{comment[1].name.split(" ")[0]}}</a>
-							</td>
-							<td style="word-break: break-all">
-								{{comment[0].content}}
-							</td>
-							<td style="width: 20%">
-								{{comment[0].created_at | date:"dd/MM/yy '-' hh:mma"}}
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="field">
+				<label class="event-card__title" >Comentários</label>
+			<table class="table is-fullwidth">
+				<thead>
+					<tr>
+						<th>
+							Nome
+						</th>
+						<th>
+							Comentário
+						</th>
+						<th>
+							Data
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="comment in comments | orderBy:'-[0].created_at'">
+						<td>
+							<a href="#!/person/list/{{comment[1].id}}">{{comment[1].name}}</a>
+						</td>
+						<td>
+							{{comment[0].content}}
+						</td>
+						<td>
+							{{comment[0].created_at | date:"dd/MM/yy '-' hh:mma"}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+		<div class="column is-8 ng-hide" ng-hide="myEvent">
+			<div class="field">
+				<button class="button btn-action__my-event">Editar</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action__my-event">Deletar</button>
 			</div>
 		</div>
 	</div>
