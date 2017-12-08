@@ -80,8 +80,6 @@ angular.module('formify')
 				$http.post(globalFactory.mainUrl + 'events', {event:event}).then(() => {
 					var invitedList = event.invited.split(", ")
 
-					console.log(invitedList)
-
 					for (var i = 0; i < invitedList.length; i++) {
 						notificationBusiness.invitationNotification(event.name, invitedList[i])
 					}
@@ -128,11 +126,30 @@ angular.module('formify')
     }
     
 		this.deleteEvent = (id) => {
-			return $http.delete(globalFactory.mainUrl + 'events/' + id)
+			return this.getUsersFollowingEvent(id).then((users) => {
+				for (let i = 0; i < users.data.length; i ++) {
+					notificationBusiness.notifyDeleted(users.data[i], id)
+				}
+				return $http.delete(globalFactory.mainUrl + 'events/' + id)
+			})
 		}
 
 		this.editEvent = (event) => {
-			return $http.put(globalFactory.mainUrl + 'events/' + event.event_id, {event:event})
+
+			event.location_id = event.selectedLocation.id
+			event.event_type_id = event.selectedType.id
+
+			return this.getUsersFollowingEvent(event.event_id).then((users) => {
+				for (let i = 0; i < users.data.length; i ++) {
+					notificationBusiness.notifyEdited(users.data[i], event)
+				}
+				return $http.put(globalFactory.mainUrl + 'events/' + event.event_id, {event:event})
+			})
+			
+		}
+
+		this.getUsersFollowingEvent = (eventId) => {
+			return $http.get(globalFactory.mainUrl + 'event_users/following_users/' + eventId)
 		}
 	}
 ])

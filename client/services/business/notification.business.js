@@ -41,6 +41,24 @@ angular.module('formify')
 			})
 		}
 
+		this.notifyDeleted = (userId, eventId) => {
+			var notification = {}
+
+			notification.description = "O evento " + globalFactory.localUrl + '#!/' + 'event/' + eventId + " foi cancelado :("
+			notification.user_id = userId
+
+			return $http.post(globalFactory.mainUrl + baseUrl, {notification: notification})
+		}
+
+		this.notifyEdited = (userId, event) => {
+			var notification = {}
+
+			notification.description = "O evento " + event.name + " foi alterado!"
+			notification.user_id = userId
+
+			return $http.post(globalFactory.mainUrl + baseUrl, {notification: notification})
+		}
+
 		this.createByEmail = (notification) => {
 			return $http.post(globalFactory.mainUrl + baseUrl + "email", {notification: notification})
 		}
