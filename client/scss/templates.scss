@@ -35,6 +35,16 @@
 		float: right;
 	}
 
+	&__location {
+		width: 45%;
+		float: left;
+	}
+
+	&__type {
+		width: 45%;
+		float: right;
+	}
+
 	&__title {
 		color: $fmy-grey-light;
 		font-size: 20px;
