@@ -1,6 +1,6 @@
 angular.module('formify')
-.service("eventBusiness", ['$http', 'busyService', 'globalFactory' , 'LocalStorage', 'notifyService', '$location',
-	function($http, busyService, globalFactory, LocalStorage, notifyService, $location) {
+.service("eventBusiness", ['$http', 'busyService', 'globalFactory' , 'LocalStorage', 'notifyService', '$location', 'notificationBusiness',
+	function($http, busyService, globalFactory, LocalStorage, notifyService, $location, notificationBusiness) {
 		this.getAll = () => {
 			return $http.get(globalFactory.mainUrl + 'events')
 		}
@@ -35,26 +35,30 @@ angular.module('formify')
 			return $http.get(globalFactory.mainUrl + 'event_types/' + id)
 		}
 
-		this.createEvent = (event) => {
+		this.createEvent = (event, invited) => {
 			if (event.name == undefined) {
 				notifyService.notify('danger', 'Erro', 'Preencha o nome do evento')
 				return;
 			}
 			
-			if (event.selectedType == undefined) {
-				notifyService.notify('danger', 'Erro', 'Preencha o local do evento')
-				return;
-			}
-
-			if (event.selectedLocation == undefined) {
-				notifyService.notify('danger', 'Erro', 'Preencha o tipo de evento')
-				return;
-			}
-
 			if (event.start_date == undefined || event.end_date == undefined) {
 				notifyService.notify('danger', 'Erro', 'Preencha as datas do evento')
 				return;
 			}
+
+			if (event.selectedLocation == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o local de evento')
+				return;
+			}
+
+
+			if (event.selectedType == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o tipo do evento')
+				return;
+			}
+
+			event.location_id = event.selectedLocation.id
+			event.event_type_id = event.selectedType.id
 			
 			this.verifyLocations(event.start_date, event.end_date).then((locations) => {
 
@@ -73,7 +77,16 @@ angular.module('formify')
 					return;
 				}
 
-				$http.post(globalFactory.mainUrl + 'events', {event:event})
+				$http.post(globalFactory.mainUrl + 'events', {event:event}).then(() => {
+					var invitedList = event.invited.split(", ")
+
+					console.log(invitedList)
+
+					for (var i = 0; i < invitedList.length; i++) {
+						notificationBusiness.invitationNotification(event.name, invitedList[i])
+					}
+				})
+
 				$location.path("/")
 			})
 		}

@@ -1,6 +1,6 @@
 angular.module('formify')
-.controller('newEventCtrl',['$scope', 'eventBusiness', 'LocalStorage', 'globalFactory', '$location', 'notifyService',
-function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyService) {
+.controller('newEventCtrl',['$scope', 'eventBusiness', 'LocalStorage', 'globalFactory', '$location', 'notifyService', 'notificationBusiness',
+function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyService, notificationBusiness) {
 
 	$scope.data = {}
 	$scope.sugestions = false
@@ -20,9 +20,7 @@ function ($scope, eventBusiness, LocalStorage, globalFactory, $location, notifyS
 		$scope.data.status = "Open"
 		$scope.data.rating = 5
 		$scope.data.user_id = LocalStorage.getValue(globalFactory.userKey).id
-		$scope.data.event_type_id = $scope.data.selectedType.id
-		$scope.data.location_id = $scope.data.selectedLocation.id
 
-		event = eventBusiness.createEvent($scope.data)
+		eventBusiness.createEvent($scope.data)
 	}
 }])
