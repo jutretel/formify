@@ -51,7 +51,19 @@
 				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed'">Confirmar Presença</button>
 			</div>
 			<div class="field">
-				<button class="button btn-action ng-hide" id="button-rating" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Rate</button>
+				<label class="event-card__title" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Selecione quem deseja avaliar</label>
+			</div>	
+			<div class="field">
+				<combobox source='optionsRated' selected-item='data.selectRating' display-property='name' ng-show="event.status == 'Closed' && participation == 'Confirmed'"/></combobox>
+		   </div>	
+			<div class="field">
+				<label class="event-card__title" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Selecione a nota</label>
+			</div>
+			<div class="field">
+					<combobox source='optionsRate' selected-item='data.selectRate' display-property='name' ng-show="event.status == 'Closed' && participation == 'Confirmed'"/>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-rating" ng-click="rate()" ng-show="event.status == 'Closed' && participation == 'Confirmed'" >Rate</button></button>
 			</div>
 			<div class="field">
 				<button class="button btn-action ng-hide" id="button-interest" ng-click="interest()" ng-show="event.status == 'Open'">Marcar Interesse</button>
@@ -130,32 +142,6 @@
 			</div>
 			<div class="field">
 				<button class="button btn-action__my-event">Deletar</button>
-			</div>
-		</div>
-		<div class="column is-8 ng-hide" ng-show="myEvent">
-			<div class="field">
-				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed'">Confirmar Presença</button>
-			</div>
-			<div class="field">
-				<label class="event-card__title" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Selecione quem deseja avaliar</label>
-					<combobox source='optionsRated' selected-item='data.selectRating' display-property='name' ng-show="event.status == 'Closed' && participation == 'Confirmed'"/></combobox>
-				</div>
-			
-				<label class="event-card__title" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Selecione a nota</label>
-				<div class="field">
-					<combobox source='optionsRate' selected-item='data.selectRate' display-property='name' ng-show="event.status == 'Closed' && participation == 'Confirmed'"/>
-			</div>
-			<div class="field">
-				<button class="button btn-action ng-hide" id="button-rating" ng-click="rate()" ng-show="event.status == 'Closed' && participation == 'Confirmed'" >Rate</button></button>
-			</div>
-			<div class="field">
-				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed' && Subscribed">Confirmar Presença</button>
-			</div>	
-			<div class="field">
-				<button class="button btn-action ng-hide" id="button-interest" ng-click="interest()" ng-show="event.status == 'Open'">Marcar Interesse</button>
-			</div>
-			<div class="field">
-				<button class="button btn-action ng-hide" id="button-subscribe" ng-click="subscription()" ng-show="event.status == 'Open'">Inscrever-se</button>
 			</div>
 		</div>
 	</div>

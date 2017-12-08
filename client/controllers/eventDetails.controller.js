@@ -113,7 +113,7 @@ angular.module('formify')
 							}
 							$route.reload()
 						}	
-					})
+					}})
 				})
 			}
 		})	
