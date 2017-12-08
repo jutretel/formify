@@ -1,12 +1,12 @@
 angular.module('formify')
-.controller('eventDetailsCtrl',['$scope', 'eventBusiness', 'userService', 'LocalStorage', 'globalFactory', '$routeParams', '$route', 'notifyService',
-	function ($scope, eventBusiness, userService, LocalStorage, globalFactory, $routeParams, $route, notifyService) {
-
+.controller('eventDetailsCtrl',['$scope', 'eventBusiness', 'userService', 'LocalStorage', 'globalFactory', '$routeParams', '$route', '$location',
+	function ($scope, eventBusiness, userService, LocalStorage, globalFactory, $routeParams, $route, $location) {
+	
 	$scope.onInit = function () {
 		$scope.user_id = LocalStorage.getValue(globalFactory.userKey).id
 
 		$scope.data = {}
-		$scope.myEvent = true
+		$scope.myEvent = false
 		$scope.isPublic = true
 		$scope.showComments = false
 		$scope.showRate = true
@@ -51,12 +51,11 @@ angular.module('formify')
 							$scope.user = user.data
 							$scope.data.user_id = $scope.user_id
 
-							// scope event user_id CRIADOR DO EVENTO
-							// scope user_id USUARIO LOGADO
+						// scope.event.user_id CRIADOR DO EVENTO
+						// scope.user_id USUARIO LOGADO
 
-							if ($scope.event.user_id == $scope.user_id) {
-								$scope.myEvent = false
-							}
+						if ($scope.event.user_id == $scope.user_id) {
+							$scope.myEvent = true
 						}
 
 						eventBusiness.getParticipationType($scope.user_id, $scope.event.id)
@@ -149,5 +148,13 @@ angular.module('formify')
 			eventBusiness.setEventRating($scope.event.id, $scope.event.rating)
 		}
 		$route.reload()
+	}
+	$scope.deleteEvent = function () {
+		eventBusiness.deleteEvent($routeParams.eventId)
+		$location.path('/')
+	}
+
+	$scope.editEvent = function () {
+		$location.path('/event/edit/' + $routeParams.eventId)
 	}
 }])

@@ -43,6 +43,10 @@ angular.module('formify')
 			notifyService.notify('danger', 'Erro', 'Preencha a duração do evento')
 			return;
 		}
+
+		if ($scope.data.selectedType.name == 'Outro'){
+			$scope.data.selectedType.name = $scope.data.selectedSpecificType
+		}
 		var comma = ', '
 		$scope.parts = $scope.data.participants.split(comma)
 	}

@@ -7,13 +7,16 @@ angular.module('formify',['ngRoute', 'ngCookies'])
     
     .when('/event',{templateUrl:'templates/event-list.html', controller:'eventCtrl'})
     .when('/event/new',{templateUrl:'templates/new-event.html', controller:'newEventCtrl'})
-    .when('/search',{templateUrl:'templates/search.html', controller:'searchCtrl'})
     .when('/event/:eventId',{templateUrl:'templates/event-details.html', controller:'eventDetailsCtrl'})
+    .when('/event/edit/:eventId',{templateUrl:'templates/edit-event.html', controller:'eventEditCtrl'})
+    
+    .when('/search',{templateUrl:'templates/search.html', controller:'searchCtrl'})
     .when('/certificate',{templateUrl:'templates/certificate.html', controller:'certificateCtrl'})
     .when('/',{templateUrl:'templates/event-list.html', controller:'eventListCtrl'})
 
     .when('/person/list',{templateUrl:'templates/person-list.html', controller:'personListCtrl'})
     .when('/person/list/:personId',{templateUrl:'templates/person-details.html', controller:'userDetailsCtrl'})
+    .when('/notification/list',{templateUrl:'templates/notification-list.html', controller:'notificationListCtrl'})
     
 
 	$routeProvider.otherwise({redirectTo: '/'})

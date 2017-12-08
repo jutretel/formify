@@ -1,6 +1,6 @@
 angular.module('formify')
-.service("eventBusiness", ['$http', 'busyService', 'globalFactory' , 'LocalStorage',
-	function($http, busyService, globalFactory, LocalStorage) {
+.service("eventBusiness", ['$http', 'busyService', 'globalFactory' , 'LocalStorage', 'notifyService', '$location', 'notificationBusiness',
+	function($http, busyService, globalFactory, LocalStorage, notifyService, $location, notificationBusiness) {
 		this.getAll = () => {
 			return $http.get(globalFactory.mainUrl + 'events')
 		}
@@ -31,8 +31,64 @@ angular.module('formify')
 			return $http.get(globalFactory.mainUrl + 'event_types')
 		}
 
-		this.createEvent = (event) => {
-			return $http.post(globalFactory.mainUrl + 'events', {event:event})
+		this.getEventType = (id) => {
+			return $http.get(globalFactory.mainUrl + 'event_types/' + id)
+		}
+
+		this.createEvent = (event, invited) => {
+			if (event.name == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o nome do evento')
+				return;
+			}
+			
+			if (event.start_date == undefined || event.end_date == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha as datas do evento')
+				return;
+			}
+
+			if (event.selectedLocation == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o local de evento')
+				return;
+			}
+
+
+			if (event.selectedType == undefined) {
+				notifyService.notify('danger', 'Erro', 'Preencha o tipo do evento')
+				return;
+			}
+
+			event.location_id = event.selectedLocation.id
+			event.event_type_id = event.selectedType.id
+			
+			this.verifyLocations(event.start_date, event.end_date).then((locations) => {
+
+				availablesLocations = locations.data
+
+				location_ids = availablesLocations.map(function(location) {
+					return location.id
+				})
+
+				location_names = availablesLocations.map(function(location) {
+					return location.name
+				})
+
+				if (!location_ids.includes(event.location_id)) {
+					notifyService.notify('danger', 'Erro', 'Local indisponível para essa data, sugestões: ' + location_names.join(', '))
+					return;
+				}
+
+				$http.post(globalFactory.mainUrl + 'events', {event:event}).then(() => {
+					var invitedList = event.invited.split(", ")
+
+					console.log(invitedList)
+
+					for (var i = 0; i < invitedList.length; i++) {
+						notificationBusiness.invitationNotification(event.name, invitedList[i])
+					}
+				})
+
+				$location.path("/")
+			})
 		}
 
 		this.setEventUser = (eventUser, is_delete) => {
@@ -63,12 +119,20 @@ angular.module('formify')
 		this.verifyLocations = (start, end) => {
 			return $http.get(globalFactory.mainUrl + 'locations/' + start + '/' + end)
 		}
-		
+    
 		this.setUserRating = (user_id, rating) => {
 			return $http.put(globalFactory.mainUrl + 'users/' + user_id, {rating:rating})
 		}
 		this.setEventRating = (event, rating) => {
 			return $http.put(globalFactory.mainUrl + 'events/' + event, {rating:rating})
+    }
+    
+		this.deleteEvent = (id) => {
+			return $http.delete(globalFactory.mainUrl + 'events/' + id)
+		}
+
+		this.editEvent = (event) => {
+			return $http.put(globalFactory.mainUrl + 'events/' + event.event_id, {event:event})
 		}
 	}
 ])

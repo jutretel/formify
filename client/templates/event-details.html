@@ -37,6 +37,32 @@
 					{{location.name}}
 				</div>
 			</div>
+		</div>
+		<div class="column is-8 ng-hide" ng-show="myEvent">
+			<div class="field">
+				<button class="button btn-action__my-event" ng-click="editEvent()">Editar</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action__my-event" ng-click="deleteEvent()">Deletar</button>
+			</div>
+		</div>
+		<div class="column is-8 ng-hide" ng-hide="myEvent">
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-confirmed" ng-click="confirmation()" ng-show="event.status == 'Closed'">Confirmar Presença</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-rating" ng-show="event.status == 'Closed' && participation == 'Confirmed'">Rate</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-interest" ng-click="interest()" ng-show="event.status == 'Open'">Marcar Interesse</button>
+			</div>
+			<div class="field">
+				<button class="button btn-action ng-hide" id="button-subscribe" ng-click="subscription()" ng-show="event.status == 'Open'">Inscrever-se</button>
+			</div>
+		</div>
+	</div>
+	<div class="columns">
+		<div class="column is-12">
 			<div class="field">
 				<label class="event-card__title">Descrição</label>
 				<div class="control event-card__description">

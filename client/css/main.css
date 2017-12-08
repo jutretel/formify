@@ -5862,6 +5862,14 @@ label.panel-block {
   width: 45%;
   float: right; }
 
+.new-event__location {
+  width: 45%;
+  float: left; }
+
+.new-event__type {
+  width: 45%;
+  float: right; }
+
 .new-event__title {
   color: #a0a0a0;
   font-size: 20px;
