@@ -1,6 +1,6 @@
 angular.module('formify')
-.service("eventBusiness", ['$http', 'busyService', 'globalFactory' , 'LocalStorage',
-	function($http, busyService, globalFactory, LocalStorage) {
+.service("eventBusiness", ['$http', 'busyService', 'globalFactory' , 'LocalStorage', 'notifyService', '$location',
+	function($http, busyService, globalFactory, LocalStorage, notifyService, $location) {
 		this.getAll = () => {
 			return $http.get(globalFactory.mainUrl + 'events')
 		}
@@ -55,7 +55,27 @@ angular.module('formify')
 				notifyService.notify('danger', 'Erro', 'Preencha as datas do evento')
 				return;
 			}
-			return $http.post(globalFactory.mainUrl + 'events', {event:event})
+			
+			this.verifyLocations(event.start_date, event.end_date).then((locations) => {
+
+				availablesLocations = locations.data
+
+				location_ids = availablesLocations.map(function(location) {
+					return location.id
+				})
+
+				location_names = availablesLocations.map(function(location) {
+					return location.name
+				})
+
+				if (!location_ids.includes(event.location_id)) {
+					notifyService.notify('danger', 'Erro', 'Local indisponível para essa data, sugestões: ' + location_names.join(', '))
+					return;
+				}
+
+				$http.post(globalFactory.mainUrl + 'events', {event:event})
+				$location.path("/")
+			})
 		}
 
 		this.setEventUser = (eventUser, is_delete) => {
