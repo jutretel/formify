@@ -63,5 +63,12 @@ angular.module('formify')
 		this.verifyLocations = (start, end) => {
 			return $http.get(globalFactory.mainUrl + 'locations/' + start + '/' + end)
 		}
+		
+		this.setUserRating = (user_id, rating) => {
+			return $http.put(globalFactory.mainUrl + 'users/' + user_id, {rating:rating})
+		}
+		this.setEventRating = (event, rating) => {
+			return $http.put(globalFactory.mainUrl + 'events/' + event, {rating:rating})
+		}
 	}
 ])

@@ -9,6 +9,11 @@ angular.module('formify')
 		$scope.myEvent = true
 		$scope.isPublic = true
 		$scope.showComments = false
+		$scope.showRate = true
+		$scope.parts = []
+
+		$scope.optionsRated = [{name:'Dono do Evento'}, {name:'Evento'}]
+		$scope.optionsRate = [{name:'1'}, {name:'2'}, {name:'3'}, {name:'4'}, {name:'5'}]
 
 		eventBusiness.getComments($routeParams.eventId)
 		.then(function (comment) {
@@ -119,9 +124,30 @@ angular.module('formify')
 			notifyService.notify('danger', 'Erro', 'Preencha o comentário')
 			return;
 		}
-		else
+		else{
 			eventBusiness.createComment($scope.data)
-			$route.reload()
+			var comma = ', '
+			$scope.parts = $scope.data.mention.split(comma)
+			$route.reload()	
+		}
 	}
-
+	$scope.rate = function () {
+		if ($scope.data.selectRating == undefined) {
+			notifyService.notify('danger', 'Erro', 'Preencha quem irá avaliar')
+			return;
+		}
+		if ($scope.data.selectRate == undefined) {
+			notifyService.notify('danger', 'Erro', 'Preencha a nota')
+			return;
+		}
+		if($scope.data.selectRating.name == 'Dono do Evento'){
+			$scope.user.rating = ($scope.user.rating/2 + $scope.data.selectRate.name/2)
+			eventBusiness.setUserRating($scope.user.id, $scope.user.rating)
+		}
+		else if($scope.data.selectRating.name == 'Evento'){
+			$scope.event.rating = ($scope.event.rating/2 + $scope.data.selectRate.name/2)
+			eventBusiness.setEventRating($scope.event.id, $scope.event.rating)
+		}
+		$route.reload()
+	}
 }])
