@@ -12,6 +12,10 @@ angular.module('formify')
 		link: function(scope, element, attrs){
 
 			scope.selectedText = scope.selectedItem ? scope.selectedItem[scope.displayProperty] : "Selecione"
+			scope.$watch('selectedItem', function(){
+ 				if(scope.selectedItem)
+ 					scope.selectedText = scope.selectedItem[scope.displayProperty]
+ 			})
 
 			//select event
 			scope.select = function (item) {
