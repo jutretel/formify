@@ -21,6 +21,30 @@ angular.module('formify')
 			})
 		}
 
+		this.invitationNotification = (eventName, invitedUserEmail) => {
+			var notification = {}
+			//pega o usuario logado
+			return userService.get(LocalStorage.getValue(globalFactory.userKey).id)
+			.then((user) => {
+				if(!user.data)
+					return;
+
+				user = user.data
+
+				//cria a string de convite
+				notification.description = 
+				user.name + ' te convidou para seu evento ' + eventName
+				notification.user_email = invitedUserEmail
+
+				//cria a notificação
+				return this.createByEmail(notification)
+			})
+		}
+
+		this.createByEmail = (notification) => {
+			return $http.post(globalFactory.mainUrl + baseUrl + "email", {notification: notification})
+		}
+
 		this.create = (notification) =>{
 			return $http.post(globalFactory.mainUrl + baseUrl, {notification : notification})
 		}
